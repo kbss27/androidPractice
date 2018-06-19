@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Ch2-Material</string>
+    <string name="drawer_open">open drawer</string>
+    <string name="drawer_close">close drawer</string>
+</resources>

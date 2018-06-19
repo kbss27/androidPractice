@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+    <!--위는 status bar 안가리게하려고-->
+    <!--하위 view들의 상호 연동..-->
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <!-- toolbar를 포함해서 화면의 상단을 다양하게 처리..-->
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="242dp"
+            android:fitsSystemWindows="true"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <!--appbar가 접히는 정책..
+            contentScrim : 어느정도 접힌경우 칠할 바탕색..
+            expandedTitleMarginBottom : appbar의 title 문자열 margin..
+            layout_scrollFlags : appbar가 접히는 정책...
+            scroll|exitUntilCollapsed : 접힌다.. 접히다가 toolbar정도의 사이즈만 남으면 더이상 접히지 않는다..
+            scroll|enterAlwaysCollapsed : 접힌다.. 끝까지..-->
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/collapsing"
+                android:layout_width="match_parent"
+                android:layout_height="242dp"
+                app:contentScrim="?attr/colorPrimary"
+                app:expandedTitleMarginBottom="50dp"
+                app:expandedTitleMarginStart="48dp"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/aoa"
+                    app:layout_collapseMode="parallax"/>
+
+                <!--
+                layout_collapseMode : scroll 될때 이 view는 어떻게 scroll 될것인가?
+                CollapsingToolbarLayout은 전체 appbar가 어떻게 접힐것인가이고..
+                그 안에 개별 view의 scroll 지정..
+
+                parallax : 초기부터 같이 scroll 된다..
+                pin : scroll 안된다.
+                -->
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="pin"/>
+
+                <!--tab button의 다양화 처리
+                tabGravity : tab button 정렬.. left, right, center.. 안주면 기본은 등분으로..
+                tabMode : scrollable 지정하면 tab button 부분이 유저에 의해 스크롤 된다.
+                scrollable로 지정하면 tabGravity 적용 안된다.. left 부터 순차적으로-->
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/tabs"
+                    style="@style/TabtextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="bottom"
+                    app:layout_collapseMode="parallax"
+                    app:tabGravity="center"
+                    app:tabMode="scrollable" />
+            </android.support.design.widget.CollapsingToolbarLayout>
+        </android.support.design.widget.AppBarLayout>
+
+        <!--
+        아래의 문자열은 단순 문자열이 아니라 클래스명이다...
+        behavior 클래스 : 다른 view의 정보를 받아.. 자신의 view를 조정해주는 역할을 하는 클래스..
+        보통 조정 대상이 되는 view의 inner로 많이 만든다..
+
+        scroll 정보는 viewpager 내에서 발생하는 거다...
+        이 정보를 받아서 처리할 behavior 클래스를 지정하는 거다..
+        coordinator layout이 이 정보대로.. behavior에게 정보 전달..
+        -->
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        <!--floating action button을 appbar에다가 부킹시킨다.-->
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_floating"
+            app:fabSize="normal"
+            app:rippleColor="#FFFFFF"
+            app:layout_anchor="@id/appbar"
+            app:layout_anchorGravity="bottom|right"/>
+    </android.support.design.widget.CoordinatorLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/navigation_header"
+        app:menu="@menu/main_drawer" />
+</android.support.v4.widget.DrawerLayout>
