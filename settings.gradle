@@ -1,1 +1,1 @@
-include ':app', ':ch2-material'
+include ':app', ':ch2-material', ':ch3-aidl', ':ch3-aidl-client', ':ch3-appwidget'
