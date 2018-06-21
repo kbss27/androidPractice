@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.ch5_map">
+
+    <!--
+    지도를 위해서 permission 문자열을 <<package_name>>+.permission.MAPS_RECEIVE
+    으로 지정하고 protectionLevel을 signature로 지정..
+    그리고 그 이름으로 uses-permission 선언..
+    -->
+    <!-- 마치 너희컨텐츠인마냥 쓰지마라라는 경고? -->
+    <permission android:name="com.example.ch5_map.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature"/>
+
+    <uses-permission android:name="com.example.ch5_map.permission.MAPS_RECEIVE"/>
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!--sd카드에 짧은 캐싱개념처럼 쓰는것-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <!-- 지도 데이터 이용시 내부적으로 구글 앱을 연동하는데 그 앱에서 요구하는 퍼미션..
+    아이콘은 없는앱. 온갖 구글 서비스 이용시 필요한 앱.-->
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!--맵키 등록-->
+        <meta-data android:name="com.google.android.maps.v2.API_KEY"
+            android:value=""/>
+        <!--우리가 이용하는 라이브러리 버전-->
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
+
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -13,6 +13,8 @@
             <option value="$PROJECT_DIR$/ch3-aidl" />
             <option value="$PROJECT_DIR$/ch3-aidl-client" />
             <option value="$PROJECT_DIR$/ch3-appwidget" />
+            <option value="$PROJECT_DIR$/ch4-contacts-sms" />
+            <option value="$PROJECT_DIR$/ch5-map" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
