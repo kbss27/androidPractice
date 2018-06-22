@@ -32,6 +32,7 @@
         android:theme="@style/AppTheme">
 
         <!--맵키 등록-->
+        <!-- gradle 클릭 ch5-map > android > signingReport > SHA1 얻음-->
         <meta-data android:name="com.google.android.maps.v2.API_KEY"
             android:value=""/>
         <!--우리가 이용하는 라이브러리 버전-->
