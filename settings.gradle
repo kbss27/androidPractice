@@ -1,1 +1,1 @@
-include ':app', ':ch2-material', ':ch3-aidl', ':ch3-aidl-client', ':ch3-appwidget', ':ch4-contacts-sms', ':ch5-map'
+include ':app', ':ch2-material', ':ch3-aidl', ':ch3-aidl-client', ':ch3-appwidget', ':ch4-contacts-sms', ':ch5-map', ':ch6-http', ':ch6-socket'
